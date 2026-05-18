@@ -42,6 +42,7 @@
 		"MixinParticleManager",
 		"MixinPlayerControllerMP",
 		"MixinRainbowLeafBlockColors",
+		"MixinRecipeBook",
 		"MixinRenderGlobal",
 		"MixinRenderItem",
 		"MixinRenderItemFrame",
