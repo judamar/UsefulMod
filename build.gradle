@@ -13,20 +13,20 @@ buildscript {
 apply plugin: "net.minecraftforge.gradle.liteloader"
 apply plugin: "org.spongepowered.mixin"
 
-version = "1.1.0"
-def mcVersion = "1.12.2"
-def modName = "UsefulMod".toString()
+version = '1.1.1'
+def mcVersion = '1.12.2'
+def modName = 'UsefulMod'
 def modId = modName.toLowerCase()
 group = "nessiesson.$modId"
 
 minecraft {
-	version = mcVersion
-	mappings = "stable_39"
-	runDir = "run"
+	version = mcVersion.toString()
+	mappings = 'stable_39'
+	runDir = 'run'
 	makeObfSourceJar = false
 
-	replace "@VERSION@", project.version
-	replace "@NAME@", modName
+	replace "@VERSION@", project.version.toString()
+	replace "@NAME@", modName.toString()
 }
 
 mixin {
@@ -45,9 +45,14 @@ litemod.json {
 }
 
 jar {
-	classifier = ""
+	classifier = ''
 	baseName = "$modName-$mcVersion"
 	from litemod.outputs
+}
+
+compileJava {
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
 }
 
 runClient {
