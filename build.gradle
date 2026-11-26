@@ -13,7 +13,7 @@ buildscript {
 apply plugin: "net.minecraftforge.gradle.liteloader"
 apply plugin: "org.spongepowered.mixin"
 
-version = '1.1.2'
+version = '1.1.3'
 def mcVersion = '1.12.2'
 def modName = 'UsefulMod'
 def modId = modName.toLowerCase()
