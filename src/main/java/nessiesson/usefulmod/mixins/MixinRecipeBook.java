@@ -13,13 +13,15 @@ import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CraftingManager.class)
 public class MixinRecipeBook {
 
-    @Inject(method = "<clinit>", at = @At("RETURN"))
-    private static void onInit(CallbackInfo ci) {
+    // Register after the vanilla recipes so their numeric ids match a server without this mod;
+    // the recipe book sends ids, and registering in <clinit> shifted every vanilla id by 3.
+    @Inject(method = "init", at = @At("RETURN"))
+    private static void onInit(CallbackInfoReturnable<Boolean> cir) {
         registerRocketRecipes();
     }
 
